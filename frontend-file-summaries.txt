@@ -1,0 +1,6 @@
+{
+  "frontend/src/data/guidelinesData.ts": "Complete static data file containing structured admission guidelines for India, USA, UK, Canada, and Australia — including documents, application steps, exam requirements, and timelines for each destination.",
+  "frontend/src/pages/Guidelines.tsx": "Admission Guidelines page with a tabbed layout for 5 destinations, showing required documents checklist, numbered application steps, exam requirements with score thresholds, and key timeline phases.",
+  "frontend/src/pages/CollegeDetail.tsx": "College Detail page that fetches college data by ID from the route params, displaying full college info (overview, courses, fees, rankings, eligibility, documents, deadline) with a mini SVG map and breadcrumb navigation.",
+  "frontend/src/components/ChatbotWidget.tsx": "Floating AI chatbot widget fixed to the bottom-right corner of all pages, with a toggleable chat window, conversation history, suggested questions, loading indicators, and backend integration via askChatBot."
+}

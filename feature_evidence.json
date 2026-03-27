@@ -1,0 +1,198 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-apply-a-cohesive-visual-theme-across-the-entire-application-use-a-clean-academic-tech-aesthetic-with-deep-teal-and-amber-accent-colors-modern-sans-serif-typography-card-based-layouts-and-subtle-gradient-hero-sections-the-design-should-feel-trustworthy-international-and-accessible-for-student-users",
+      "featureTitle": "Apply a cohesive visual theme across the entire application: use a clean academic-tech aesthetic with deep teal and amber accent colors, modern sans-serif typography, card-based layouts, and subtle gradient hero sections. The design should feel trustworthy, international, and accessible for student users.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-landing-home-page-that-introduces-edumap-with-a-hero-section-headline-subheadline-call-to-action-button-a-feature-highlights-section-showcasing-the-six-core-modules-profile-recommendations-comparison-maps-guidelines-chatbot-and-a-brief-how-it-works-step-by-step-section",
+      "featureTitle": "Create a Landing / Home page that introduces EduMap with a hero section (headline, subheadline, call-to-action button), a feature highlights section showcasing the six core modules (Profile, Recommendations, Comparison, Maps, Guidelines, Chatbot), and a brief 'How It Works' step-by-step section.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-student-profile-form-page-where-users-can-input-their-academic-details-stream-science-commerce-arts-percentage-marks-budget-range-min-max-in-inr-usd-areas-of-interest-multi-select-engineering-medicine-management-law-arts-etc-preferred-region-india-usa-uk-canada-australia-other-and-preferred-college-type-government-private-deemed-store-submitted-profiles-in-the-backend",
+      "featureTitle": "Build a Student Profile form page where users can input their academic details: stream (Science/Commerce/Arts), percentage/marks, budget range (min/max in INR/USD), areas of interest (multi-select: Engineering, Medicine, Management, Law, Arts, etc.), preferred region (India / USA / UK / Canada / Australia / Other), and preferred college type (Government / Private / Deemed). Store submitted profiles in the backend.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Profile.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-recommendations-page-that-takes-the-stored-student-profile-matches-it-against-college-records-using-a-content-based-scoring-algorithm-weighing-stream-match-budget-fit-marks-eligibility-and-region-preference-and-displays-a-ranked-list-of-recommended-colleges-each-result-card-must-show-college-name-location-fees-ranking-match-score-and-a-view-details-action",
+      "featureTitle": "Build a Recommendations page that takes the stored student profile, matches it against college records using a content-based scoring algorithm (weighing stream match, budget fit, marks eligibility, and region preference), and displays a ranked list of recommended colleges. Each result card must show college name, location, fees, ranking, match score, and a 'View Details' action.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CollegeCard.tsx",
+        "frontend/src/pages/Recommendations.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-college-comparison-page-where-users-can-select-2-4-colleges-from-a-searchable-dropdown-and-view-a-side-by-side-comparison-table-the-table-must-compare-fees-national-ranking-global-ranking-eligibility-criteria-available-courses-college-type-location-and-admission-deadlines-include-a-best-value-highlight-for-the-most-affordable-eligible-option",
+      "featureTitle": "Build a College Comparison page where users can select 2–4 colleges from a searchable dropdown and view a side-by-side comparison table. The table must compare: fees, national ranking, global ranking, eligibility criteria, available courses, college type, location, and admission deadlines. Include a 'Best Value' highlight for the most affordable eligible option.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ComparisonTable.tsx",
+        "frontend/src/pages/Compare.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-college-map-page-that-displays-college-locations-on-an-interactive-world-map-using-a-visual-map-component-leaflet-js-or-equivalent-each-college-is-shown-as-a-pin-marker-clicking-a-marker-opens-a-popup-with-college-name-city-fees-and-ranking-include-filter-controls-by-country-stream-to-show-hide-pins",
+      "featureTitle": "Build a College Map page that displays college locations on an interactive world map using a visual map component (Leaflet.js or equivalent). Each college is shown as a pin/marker. Clicking a marker opens a popup with college name, city, fees, and ranking. Include filter controls (by country, stream) to show/hide pins.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/Map.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-admission-guidelines-page-that-provides-structured-step-by-step-admission-guidance-organized-by-destination-india-usa-uk-canada-australia-for-each-destination-show-required-documents-checklist-typical-application-process-steps-key-exam-requirements-e-g-jee-sat-ielts-toefl-gre-and-general-timeline-deadlines-use-an-accordion-or-tabbed-layout",
+      "featureTitle": "Build an Admission Guidelines page that provides structured, step-by-step admission guidance organized by destination (India / USA / UK / Canada / Australia). For each destination, show: required documents checklist, typical application process steps, key exam requirements (e.g., JEE, SAT, IELTS, TOEFL, GRE), and general timeline/deadlines. Use an accordion or tabbed layout.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/data/guidelinesData.ts",
+        "frontend/src/pages/Guidelines.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-ai-chatbot-widget-that-appears-as-a-floating-chat-button-on-all-pages-when-opened-it-renders-a-chat-interface-where-users-can-type-questions-the-chatbot-backend-should-match-user-queries-against-a-predefined-knowledge-base-colleges-fees-courses-admission-requirements-documents-using-keyword-intent-matching-and-return-relevant-answers-support-at-least-the-following-intents-fee-inquiry-eligibility-inquiry-document-requirements-application-deadline-course-availability-and-ranking-inquiry",
+      "featureTitle": "Build an AI Chatbot widget that appears as a floating chat button on all pages. When opened, it renders a chat interface where users can type questions. The chatbot backend should match user queries against a predefined knowledge base (colleges, fees, courses, admission requirements, documents) using keyword/intent matching and return relevant answers. Support at least the following intents: fee inquiry, eligibility inquiry, document requirements, application deadline, course availability, and ranking inquiry.",
+      "files": [
+        "frontend/src/components/ChatbotWidget.tsx",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-college-detail-page-accessible-from-recommendation-cards-and-comparison-results-the-page-must-display-full-college-information-name-description-location-all-available-courses-fees-breakdown-eligibility-criteria-required-documents-application-steps-ranking-details-and-a-mini-map-pin-showing-its-location",
+      "featureTitle": "Add a College Detail page accessible from recommendation cards and comparison results. The page must display full college information: name, description, location, all available courses, fees breakdown, eligibility criteria, required documents, application steps, ranking details, and a mini map pin showing its location.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CollegeDetail.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-responsive-top-navigation-bar-with-the-edumap-logo-links-to-home-profile-recommendations-compare-map-guidelines-and-a-chatbot-toggle-include-a-mobile-hamburger-menu-for-small-screens",
+      "featureTitle": "Add a responsive top navigation bar with the EduMap logo, links to Home, Profile, Recommendations, Compare, Map, Guidelines, and a Chatbot toggle. Include a mobile hamburger menu for small screens.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

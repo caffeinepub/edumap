@@ -1,0 +1,238 @@
+{
+  "kind": "build_request",
+  "title": "EduMap: AI-ML Powered Global Admission Navigator Website",
+  "projectName": "EduMap Navigator",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Apply a cohesive visual theme across the entire application: use a clean academic-tech aesthetic with deep teal and amber accent colors, modern sans-serif typography, card-based layouts, and subtle gradient hero sections. The design should feel trustworthy, international, and accessible for student users.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages share consistent color palette (deep teal primary, amber accent)",
+        "Typography is readable and professional across all screen sizes",
+        "Navigation bar is present on all pages with the EduMap logo and key section links",
+        "Hero section on the landing page features a gradient background and a clear value proposition headline"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a Landing / Home page that introduces EduMap with a hero section (headline, subheadline, call-to-action button), a feature highlights section showcasing the six core modules (Profile, Recommendations, Comparison, Maps, Guidelines, Chatbot), and a brief 'How It Works' step-by-step section.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero section renders with headline 'EduMap: AI-ML Powered Global Admission Navigator' and a prominent CTA button",
+        "Six feature cards are displayed with icons and short descriptions",
+        "'How It Works' section shows at least 3 steps (Enter Profile → Get Recommendations → Compare & Decide)",
+        "Page is responsive on mobile and desktop"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build a Student Profile form page where users can input their academic details: stream (Science/Commerce/Arts), percentage/marks, budget range (min/max in INR/USD), areas of interest (multi-select: Engineering, Medicine, Management, Law, Arts, etc.), preferred region (India / USA / UK / Canada / Australia / Other), and preferred college type (Government / Private / Deemed). Store submitted profiles in the backend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Collects student data such as marks, stream, budget, interests, and preferred region"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form collects all specified fields with appropriate input types (dropdowns, sliders, checkboxes)",
+        "Form validates required fields before submission",
+        "On submission, profile data is saved to the backend canister",
+        "User receives a confirmation message after successful profile save",
+        "Saved profile can be retrieved and pre-filled on revisit"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement a backend data model to store college records with the following fields: name, country, city, stream, courses offered, annual fees (INR/USD), ranking (national and global), eligibility criteria (minimum marks/scores), admission requirements (list of documents), application deadline, college type (Government/Private), and geographic coordinates (latitude, longitude).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "centralizes essential data such as fees, rankings, eligibility criteria, admission requirements, and geographic information"
+        ]
+      },
+      "acceptanceCriteria": [
+        "College record type is defined in main.mo with all specified fields",
+        "Backend exposes functions to add, retrieve, and query college records",
+        "At least 20 seed college entries are pre-populated covering India and abroad (US, UK, Canada, Australia)",
+        "Query functions support filtering by stream, country, fee range, and ranking"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build a Recommendations page that takes the stored student profile, matches it against college records using a content-based scoring algorithm (weighing stream match, budget fit, marks eligibility, and region preference), and displays a ranked list of recommended colleges. Each result card must show college name, location, fees, ranking, match score, and a 'View Details' action.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Generates personalized college suggestions using machine learning algorithms",
+          "Content-Based Filtering Algorithm — Matches user profiles (marks, stream, budget) with college attributes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Recommendation engine runs on the backend and returns scored, sorted college list",
+        "Results page displays college cards sorted by match score (highest first)",
+        "Each card shows: name, city/country, annual fees, ranking, and a percentage match score",
+        "User can re-run recommendations after editing their profile",
+        "If no profile exists, user is redirected to the Profile form"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build a College Comparison page where users can select 2–4 colleges from a searchable dropdown and view a side-by-side comparison table. The table must compare: fees, national ranking, global ranking, eligibility criteria, available courses, college type, location, and admission deadlines. Include a 'Best Value' highlight for the most affordable eligible option.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Enables real-time comparison based on parameters like fees, rankings, eligibility criteria, and admission requirements"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can search and select 2 to 4 colleges using a searchable multi-select input",
+        "Comparison table renders all specified parameters as rows with colleges as columns",
+        "Cells use visual indicators (green/red) for relative better/worse values on numeric fields",
+        "'Best Value' badge is shown on the college column with the lowest fees among eligible ones",
+        "Table is horizontally scrollable on mobile"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build a College Map page that displays college locations on an interactive world map using a visual map component (Leaflet.js or equivalent). Each college is shown as a pin/marker. Clicking a marker opens a popup with college name, city, fees, and ranking. Include filter controls (by country, stream) to show/hide pins.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Google Maps Integration Module: Displays geographic insights and location data for colleges"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Interactive map renders with college location markers loaded from backend data",
+        "Clicking a marker shows a popup with college name, location, fees, and ranking",
+        "Filter panel allows filtering markers by country and stream",
+        "Map is centered on India by default and supports zoom/pan",
+        "Map is responsive and usable on mobile devices"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build an Admission Guidelines page that provides structured, step-by-step admission guidance organized by destination (India / USA / UK / Canada / Australia). For each destination, show: required documents checklist, typical application process steps, key exam requirements (e.g., JEE, SAT, IELTS, TOEFL, GRE), and general timeline/deadlines. Use an accordion or tabbed layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Provides structured information about required documents, procedures, and application steps"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page contains tabs or accordion sections for each of the 5 destinations",
+        "Each section lists required documents as a checklist",
+        "Application steps are shown as a numbered sequence",
+        "Exam requirements are listed with names and score thresholds",
+        "Content is readable, well-structured, and scrollable on all screen sizes"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Build an AI Chatbot widget that appears as a floating chat button on all pages. When opened, it renders a chat interface where users can type questions. The chatbot backend should match user queries against a predefined knowledge base (colleges, fees, courses, admission requirements, documents) using keyword/intent matching and return relevant answers. Support at least the following intents: fee inquiry, eligibility inquiry, document requirements, application deadline, course availability, and ranking inquiry.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "NLP-based AI chatbot allows students to ask questions related to colleges, courses, fees, documents, and admission processes",
+          "Performs intent recognition and entity extraction to understand and respond to student queries"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Floating chat button is visible on all pages in the bottom-right corner",
+        "Chat window opens/closes on button click and shows conversation history",
+        "Backend processes text queries and returns relevant responses from the knowledge base",
+        "At least 6 intents are handled: fees, eligibility, documents, deadlines, courses, rankings",
+        "Unrecognized queries return a helpful fallback message with suggestions",
+        "Chat history persists during the user session"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a College Detail page accessible from recommendation cards and comparison results. The page must display full college information: name, description, location, all available courses, fees breakdown, eligibility criteria, required documents, application steps, ranking details, and a mini map pin showing its location.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "College detail page is accessible via a unique route (e.g., /college/:id)",
+        "All stored college fields are displayed in a structured layout with sections",
+        "A mini map shows the college's geographic location",
+        "Page includes a 'Add to Comparison' button",
+        "Breadcrumb navigation allows returning to Recommendations or Comparison"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add a responsive top navigation bar with the EduMap logo, links to Home, Profile, Recommendations, Compare, Map, Guidelines, and a Chatbot toggle. Include a mobile hamburger menu for small screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation bar is present on all pages",
+        "All six page links navigate to correct routes",
+        "Active route is visually highlighted in the nav",
+        "Mobile hamburger menu collapses/expands on toggle",
+        "EduMap logo is displayed on the left side of the nav"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not integrate real Google Maps API — use an open-source map library (e.g., Leaflet with OpenStreetMap tiles) for the map module",
+    "Do not integrate real ML/NLP external services — implement scoring and intent matching logic entirely within the Motoko backend",
+    "Do not integrate external authentication — user profiles are stored by session/key without login for now",
+    "All college data must be seeded in the backend; no external database connections"
+  ],
+  "nonGoals": [
+    "Real-time ML model training or external ML API integration",
+    "User account login or Internet Identity authentication",
+    "Payment processing or application fee collection",
+    "Email or SMS notification features",
+    "Admin dashboard for managing college data",
+    "Mobile app (iOS/Android)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "EduMap logo mark — a globe with a graduation cap and map pin overlay in teal and amber tones (edumap-logo.dim_256x256.png)",
+      "Hero section background illustration — abstract world map with glowing connection lines and university building silhouettes in deep teal gradient (hero-bg.dim_1440x600.png)",
+      "Graduation student illustration — diverse students celebrating with documents and a globe, flat illustration style in teal and amber (students-hero.dim_600x400.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T12:11:53.975Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 11,
+    "implemented": 10,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Apply a cohesive visual theme across the entire application: use a clean academic-tech aesthetic with deep teal and amber accent colors, modern sans-serif typography, card-based layouts, and subtle gradient hero sections. The design should feel trustworthy, international, and accessible for student users.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Add a College Detail page accessible from recommendation cards and comparison results. The page must display full college information: name, description, location, all available courses, fees breakdown, eligibility criteria, required documents, application steps, ranking details, and a mini map pin showing its location.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/CollegeDetail.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/CollegeDetail.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Add a responsive top navigation bar with the EduMap logo, links to Home, Profile, Recommendations, Compare, Map, Guidelines, and a Chatbot toggle. Include a mobile hamburger menu for small screens.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Create a Landing / Home page that introduces EduMap with a hero section (headline, subheadline, call-to-action button), a feature highlights section showcasing the six core modules (Profile, Recommendations, Comparison, Maps, Guidelines, Chatbot), and a brief 'How It Works' step-by-step section.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Build a Student Profile form page where users can input their academic details: stream (Science/Commerce/Arts), percentage/marks, budget range (min/max in INR/USD), areas of interest (multi-select: Engineering, Medicine, Management, Law, Arts, etc.), preferred region (India / USA / UK / Canada / Australia / Other), and preferred college type (Government / Private / Deemed). Store submitted profiles in the backend.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Profile.tsx",
+          "frontend/src/hooks/useStudentProfile.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Profile.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement a backend data model to store college records with the following fields: name, country, city, stream, courses offered, annual fees (INR/USD), ranking (national and global), eligibility criteria (minimum marks/scores), admission requirements (list of documents), application deadline, college type (Government/Private), and geographic coordinates (latitude, longitude).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Build a Recommendations page that takes the stored student profile, matches it against college records using a content-based scoring algorithm (weighing stream match, budget fit, marks eligibility, and region preference), and displays a ranked list of recommended colleges. Each result card must show college name, location, fees, ranking, match score, and a 'View Details' action.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Recommendations.tsx",
+          "frontend/src/hooks/useRecommendations.ts",
+          "frontend/src/components/CollegeCard.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Recommendations.tsx",
+          "frontend/src/components/CollegeCard.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Build a College Comparison page where users can select 2–4 colleges from a searchable dropdown and view a side-by-side comparison table. The table must compare: fees, national ranking, global ranking, eligibility criteria, available courses, college type, location, and admission deadlines. Include a 'Best Value' highlight for the most affordable eligible option.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Compare.tsx",
+          "frontend/src/components/ComparisonTable.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Compare.tsx",
+          "frontend/src/components/ComparisonTable.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Build a College Map page that displays college locations on an interactive world map using a visual map component (Leaflet.js or equivalent). Each college is shown as a pin/marker. Clicking a marker opens a popup with college name, city, fees, and ranking. Include filter controls (by country, stream) to show/hide pins.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Map.tsx",
+          "frontend/src/components/CollegeMap.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Map.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Build an Admission Guidelines page that provides structured, step-by-step admission guidance organized by destination (India / USA / UK / Canada / Australia). For each destination, show: required documents checklist, typical application process steps, key exam requirements (e.g., JEE, SAT, IELTS, TOEFL, GRE), and general timeline/deadlines. Use an accordion or tabbed layout.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Guidelines.tsx",
+          "frontend/src/data/guidelinesData.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Guidelines.tsx",
+          "frontend/src/data/guidelinesData.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Build an AI Chatbot widget that appears as a floating chat button on all pages. When opened, it renders a chat interface where users can type questions. The chatbot backend should match user queries against a predefined knowledge base (colleges, fees, courses, admission requirements, documents) using keyword/intent matching and return relevant answers. Support at least the following intents: fee inquiry, eligibility inquiry, document requirements, application deadline, course availability, and ranking inquiry.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ChatbotWidget.tsx",
+          "frontend/src/hooks/useChatbot.ts",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ChatbotWidget.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/edumap-logo.dim_256x256.png",
+    "frontend/public/assets/generated/hero-bg.dim_1440x600.png",
+    "frontend/public/assets/generated/students-hero.dim_600x400.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/ChatbotWidget.tsx",
+    "frontend/src/components/CollegeCard.tsx",
+    "frontend/src/components/ComparisonTable.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/data/guidelinesData.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CollegeDetail.tsx",
+    "frontend/src/pages/Compare.tsx",
+    "frontend/src/pages/Guidelines.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/Map.tsx",
+    "frontend/src/pages/Profile.tsx",
+    "frontend/src/pages/Recommendations.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

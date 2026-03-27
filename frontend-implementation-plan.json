@@ -1,0 +1,271 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "EduMap: AI-ML Powered Global Admission Navigator - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Apply cohesive academic-tech visual theme with deep teal and amber accents across the application",
+      "acceptanceCriteria": [
+        "All pages share consistent color palette (deep teal primary, amber accent)",
+        "Typography is readable and professional across all screen sizes",
+        "Navigation bar is present on all pages with the EduMap logo and key section links",
+        "Hero section on the landing page features a gradient background and a clear value proposition headline"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define CSS custom properties for deep teal primary colors (#0D4C4A, #115E5A), amber accent (#F59E0B, #D97706), neutral grays, and success/error states. Add base typography styles using modern sans-serif font stack. Include gradient utility classes for hero sections and card hover effects."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom color palette (teal primary shades, amber accent shades), custom spacing scale for card layouts, and box-shadow utilities for elevated cards. Configure font family with Inter or system font stack."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create Landing/Home page with hero section, six feature highlights, and How It Works section",
+      "acceptanceCriteria": [
+        "Hero section renders with headline 'EduMap: AI-ML Powered Global Admission Navigator' and a prominent CTA button",
+        "Six feature cards are displayed with icons and short descriptions",
+        "'How It Works' section shows at least 3 steps (Enter Profile → Get Recommendations → Compare & Decide)",
+        "Page is responsive on mobile and desktop"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "create",
+          "description": "Create Home page component with three main sections: (1) Hero section featuring gradient background using generated image hero-bg.dim_1440x600.png from frontend/public/assets/generated/hero-bg.dim_1440x600.png, headline text, subheadline, and CTA button linking to Profile page; (2) Features grid displaying six cards for Profile, Recommendations, Comparison, Maps, Guidelines, and Chatbot modules with icons and descriptions; (3) How It Works section with three numbered steps in a horizontal or vertical flow. Include generated image students-hero.dim_600x400.png from frontend/public/assets/generated/students-hero.dim_600x400.png in the hero or features section. Use Tailwind classes and card-based layouts."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Home page at root path '/'. Wrap all routes with a Layout component that includes the navigation bar. Ensure the Home route is set as the default landing page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build Student Profile form page with academic details input and backend storage",
+      "acceptanceCriteria": [
+        "Form collects all specified fields with appropriate input types (dropdowns, sliders, checkboxes)",
+        "Form validates required fields before submission",
+        "On submission, profile data is saved to the backend canister",
+        "User receives a confirmation message after successful profile save",
+        "Saved profile can be retrieved and pre-filled on revisit"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Profile.tsx",
+          "operation": "create",
+          "description": "Create Profile page component with a comprehensive form collecting: stream (dropdown: Science/Commerce/Arts), percentage (number input with validation 0-100), budget range (dual number inputs or range slider for min/max in INR/USD with currency toggle), interests (multi-select checkboxes: Engineering, Medicine, Management, Law, Arts), preferred region (dropdown: India/USA/UK/Canada/Australia/Other), and preferred college type (radio or dropdown: Government/Private/Deemed). Implement form validation for required fields and percentage range. On submit, call backend.addStudentProfile() with the form data. Display a success toast/message on successful save. Store profile in local state or session to enable pre-filling on revisit. Use shadcn/ui form components for consistent styling."
+        },
+        {
+          "path": "frontend/src/hooks/useStudentProfile.ts",
+          "operation": "create",
+          "description": "Create custom hook to manage student profile state. Provide methods to load the current profile (initially return empty/default until backend retrieval is implemented), save profile by calling backend.addStudentProfile(), and track submission status (loading, success, error). Store the submitted profile in React state for use across the app."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Profile page at '/profile'. Ensure the route is accessible from the navigation bar."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build Recommendations page displaying ranked college matches based on student profile",
+      "acceptanceCriteria": [
+        "Recommendation engine runs on the backend and returns scored, sorted college list",
+        "Results page displays college cards sorted by match score (highest first)",
+        "Each card shows: name, city/country, annual fees, ranking, and a percentage match score",
+        "User can re-run recommendations after editing their profile",
+        "If no profile exists, user is redirected to the Profile form"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Recommendations.tsx",
+          "operation": "create",
+          "description": "Create Recommendations page that checks if a student profile exists. If not, redirect to '/profile'. Otherwise, call backend.getRecommendations() to fetch the ranked list of CollegeRecommendationScore objects. Display results as a grid or list of college cards, sorted by matchScore (descending). Each card shows college name, city/country, annual fees formatted with currency, national/global ranking, and match score displayed as a percentage or progress bar. Include a 'View Details' button linking to '/college/:id'. Add a button to navigate back to Profile page for re-editing. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/hooks/useRecommendations.ts",
+          "operation": "create",
+          "description": "Create custom hook to fetch and manage recommendations. Call backend.getRecommendations() on mount and provide methods to refresh recommendations. Return the sorted list of recommendations, loading state, and error state."
+        },
+        {
+          "path": "frontend/src/components/CollegeCard.tsx",
+          "operation": "create",
+          "description": "Create reusable CollegeCard component displaying college name, location (city, country), annual fees, national and global rankings, and an optional match score. Include props for linking to detail page and adding to comparison. Use card-based layout with Tailwind styling and visual indicators (icons, badges) for rankings and match score."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Recommendations page at '/recommendations'. Ensure the route is accessible from the navigation bar."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build College Comparison page with side-by-side comparison table for 2-4 selected colleges",
+      "acceptanceCriteria": [
+        "User can search and select 2 to 4 colleges using a searchable multi-select input",
+        "Comparison table renders all specified parameters as rows with colleges as columns",
+        "Cells use visual indicators (green/red) for relative better/worse values on numeric fields",
+        "'Best Value' badge is shown on the college column with the lowest fees among eligible ones",
+        "Table is horizontally scrollable on mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Compare.tsx",
+          "operation": "create",
+          "description": "Create Compare page with a searchable multi-select input for selecting 2-4 colleges. Fetch the full college list using backend.getColleges() for the dropdown. When 2-4 colleges are selected, call backend.compareColleges(collegeIds) to fetch the selected college details. Render a side-by-side comparison table with parameters as rows (Fees, National Ranking, Global Ranking, Eligibility Criteria, Available Courses, College Type, Location, Admission Deadlines) and selected colleges as columns. Apply visual indicators (green text/icon for lower fees or better ranking, red for worse). Highlight the college with the lowest fees using a 'Best Value' badge. Make the table horizontally scrollable on small screens using overflow-x-auto."
+        },
+        {
+          "path": "frontend/src/components/ComparisonTable.tsx",
+          "operation": "create",
+          "description": "Create ComparisonTable component that accepts an array of College objects and renders a responsive table. Each row represents a parameter; each column represents a college. Use color-coded cells (green for favorable, red for less favorable) for numeric comparisons. Display a 'Best Value' badge on the header of the college column with the lowest fees."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Compare page at '/compare'. Ensure the route is accessible from the navigation bar."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build College Map page displaying college locations on an interactive world map with filters",
+      "acceptanceCriteria": [
+        "Interactive map renders with college location markers loaded from backend data",
+        "Clicking a marker shows a popup with college name, location, fees, and ranking",
+        "Filter panel allows filtering markers by country and stream",
+        "Map is centered on India by default and supports zoom/pan",
+        "Map is responsive and usable on mobile devices"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Map.tsx",
+          "operation": "create",
+          "description": "Create Map page that fetches all colleges using backend.getColleges(). Render an interactive map using react-leaflet library with OpenStreetMap tiles. Display each college as a marker at its latitude/longitude coordinates. Center the map on India (approximately 20.5937°N, 78.9629°E) with an appropriate zoom level. Implement filter controls (dropdowns or checkboxes) for country and stream that dynamically show/hide markers. On marker click, display a popup showing college name, city/country, annual fees, and national ranking. Ensure the map is responsive and usable on mobile."
+        },
+        {
+          "path": "frontend/src/components/CollegeMap.tsx",
+          "operation": "create",
+          "description": "Create CollegeMap component that accepts an array of College objects and filter state. Render a Leaflet MapContainer with TileLayer (OpenStreetMap). For each college, render a Marker with a Popup containing college details. Apply filters to show/hide markers based on selected country and stream."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Map page at '/map'. Ensure the route is accessible from the navigation bar."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Build Admission Guidelines page with structured step-by-step guidance organized by destination",
+      "acceptanceCriteria": [
+        "Page contains tabs or accordion sections for each of the 5 destinations",
+        "Each section lists required documents as a checklist",
+        "Application steps are shown as a numbered sequence",
+        "Exam requirements are listed with names and score thresholds",
+        "Content is readable, well-structured, and scrollable on all screen sizes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Guidelines.tsx",
+          "operation": "create",
+          "description": "Create Guidelines page with a tabbed or accordion layout for five destinations: India, USA, UK, Canada, Australia. Each section includes: (1) Required documents checklist (e.g., transcripts, passport, recommendation letters, SOP); (2) Application process steps as a numbered list; (3) Key exam requirements with names and score thresholds (e.g., JEE for India, SAT/ACT for USA, IELTS/TOEFL for English proficiency, GRE for graduate programs); (4) General timeline and deadlines. Use shadcn/ui Tabs or Accordion components for navigation between destinations. Ensure content is readable and scrollable on all screen sizes."
+        },
+        {
+          "path": "frontend/src/data/guidelinesData.ts",
+          "operation": "create",
+          "description": "Create a data file containing structured admission guidelines for each destination (India, USA, UK, Canada, Australia). Define types for Document, Step, Exam, and Guideline. Export an array or object mapping each destination to its guidelines content (documents, steps, exams, timelines)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for Guidelines page at '/guidelines'. Ensure the route is accessible from the navigation bar."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Build AI Chatbot widget with floating button and chat interface for query handling",
+      "acceptanceCriteria": [
+        "Floating chat button is visible on all pages in the bottom-right corner",
+        "Chat window opens/closes on button click and shows conversation history",
+        "Backend processes text queries and returns relevant responses from the knowledge base",
+        "At least 6 intents are handled: fees, eligibility, documents, deadlines, courses, rankings",
+        "Unrecognized queries return a helpful fallback message with suggestions",
+        "Chat history persists during the user session"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ChatbotWidget.tsx",
+          "operation": "create",
+          "description": "Create ChatbotWidget component that renders a floating button fixed to the bottom-right corner of the screen. On click, toggle a chat window overlay. The chat window displays a conversation history (list of ChatMessage objects with role and text) and an input field for typing questions. On message submit, call backend.askChatBot(question) and append the user message and bot response to the conversation history. Store chat history in React state to persist during the session. Display user messages aligned right and bot messages aligned left with distinct styling. Handle loading state while waiting for bot response."
+        },
+        {
+          "path": "frontend/src/hooks/useChatbot.ts",
+          "operation": "create",
+          "description": "Create custom hook to manage chatbot state. Maintain an array of ChatMessage objects. Provide a sendMessage function that calls backend.askChatBot(), appends the user question and bot response to the history, and handles loading/error states. Return the message history, sendMessage function, and loading state."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Import and render the ChatbotWidget component so it appears on all pages. Position it outside the main content area to ensure it floats above all page content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add College Detail page displaying full college information with mini map",
+      "acceptanceCriteria": [
+        "College detail page is accessible via a unique route (e.g., /college/:id)",
+        "All stored college fields are displayed in a structured layout with sections",
+        "A mini map shows the college's geographic location",
+        "Page includes a 'Add to Comparison' button",
+        "Breadcrumb navigation allows returning to Recommendations or Comparison"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CollegeDetail.tsx",
+          "operation": "create",
+          "description": "Create CollegeDetail page that accepts a college ID from the route parameter (:id). Fetch the full college list using backend.getColleges() and find the matching college by ID. Display all college fields in a structured layout with sections: Overview (name, description, location), Courses Offered (list), Fees Breakdown (annual fees with currency), Eligibility Criteria (minimum marks), Required Documents (checklist), Application Steps (numbered list), Rankings (national and global), and Admission Deadline. Include a mini map (using react-leaflet) showing the college's location as a single marker. Add an 'Add to Comparison' button that stores the college ID in comparison state or navigates to the Compare page with the ID pre-selected. Include breadcrumb navigation (e.g., Home > Recommendations > College Name) with back links."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for CollegeDetail page at '/college/:id'. Ensure this route is accessible from links in Recommendations and Compare pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add responsive top navigation bar with logo, page links, and mobile hamburger menu",
+      "acceptanceCriteria": [
+        "Navigation bar is present on all pages",
+        "All six page links navigate to correct routes",
+        "Active route is visually highlighted in the nav",
+        "Mobile hamburger menu collapses/expands on toggle",
+        "EduMap logo is displayed on the left side of the nav"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create Layout component that wraps all page content and includes the navigation bar and ChatbotWidget. The nav bar should be fixed or sticky at the top with the EduMap logo (using generated image edumap-logo.dim_256x256.png from frontend/public/assets/generated/edumap-logo.dim_256x256.png) on the left and navigation links (Home, Profile, Recommendations, Compare, Map, Guidelines) on the right. Highlight the active route using React Router's useLocation or NavLink activeClassName. On mobile screens, hide the nav links and display a hamburger menu button. On button click, toggle a mobile menu overlay or drawer showing the nav links vertically. Use Tailwind responsive classes and shadcn/ui components if applicable."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with the Layout component so the navigation bar and ChatbotWidget appear on every page. Ensure the Layout component is the top-level wrapper inside the Router."
+        }
+      ]
+    }
+  ]
+}

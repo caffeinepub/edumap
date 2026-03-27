@@ -1,0 +1,109 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T12:11:53.971Z",
+  "summary": "The diff implements most of the requested EduMap requirements including backend data model, frontend pages, chatbot, navigation, and styling. However, several specific acceptance criteria have gaps: the map uses a custom SVG implementation instead of Leaflet.js/OpenStreetMap, the College Detail page uses an SVG mini-map instead of a proper interactive mini-map, backend seeding cannot be verified from the truncated diff, and the profile pre-fill comes from localStorage rather than the backend canister.",
+  "missing_requirements": [
+    {
+      "requirement": "College Map page must use Leaflet.js or equivalent open-source map library with OpenStreetMap tiles per the build constraints. The map must support zoom/pan and be responsive on mobile.",
+      "reason": "Map.tsx uses a custom SVG-based world map with equirectangular projection rather than Leaflet.js or any real interactive map library. There is no Leaflet import or OpenStreetMap tile integration visible. The SVG map does not support real zoom/pan interactions.",
+      "evidence": [
+        "frontend/src/pages/Map.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Map is centered on India by default and supports zoom/pan.",
+      "reason": "The SVG-based map implementation does not support zoom/pan functionality. It is a static SVG render with click markers but no zoom or pan controls.",
+      "evidence": [
+        "frontend/src/pages/Map.tsx"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "A mini map shows the college's geographic location.",
+      "reason": "CollegeDetail page implements a custom SVG-based MiniMap component rather than a Leaflet map or real interactive map. This is a static SVG grid with approximate continent shapes and does not constitute an interactive map.",
+      "evidence": [
+        "frontend/src/pages/CollegeDetail.tsx"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "At least 20 seed college entries are pre-populated covering India and abroad (US, UK, Canada, Australia).",
+      "reason": "The backend main.mo is truncated and no seed data initialization code is visible in the provided diff. Cannot confirm 20+ seed entries are present.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Query functions support filtering by stream, country, fee range, and ranking.",
+      "reason": "The backend main.mo is truncated. Only getColleges() returning all records and getRecommendations() are visible. A dedicated query function with filtering parameters is not confirmed.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Saved profile can be retrieved and pre-filled on revisit from the backend canister.",
+      "reason": "Profile.tsx pre-fills from localStorage (PROFILE_STORAGE_KEY), not from the backend canister. The backend stores profiles by Principal but no getStudentProfile query function is visible, and the frontend does not fetch the profile from the backend on revisit.",
+      "evidence": [
+        "frontend/src/pages/Profile.tsx",
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Full Internet Identity authentication integration with AuthClient, login/clear functions, and delegation identity handling wrapped around the entire app.",
+      "reason": "The build request explicitly states 'Do not integrate external authentication' and lists 'User account login or Internet Identity authentication' as a non-goal. Yet useInternetIdentity.ts implements a full Internet Identity auth provider with AuthClient, login flows, and delegation identity checks, and the app is wrapped in InternetIdentityProvider.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Currency selector (INR/USD toggle) on the Profile form with a USD-to-INR conversion multiplier.",
+      "reason": "The build request asks for budget range in INR/USD as a field label but does not specify a runtime currency conversion toggle. Profile.tsx includes a currency field and applies an 83x USD-to-INR multiplier conversion, which was not requested.",
+      "evidence": [
+        "frontend/src/pages/Profile.tsx"
+      ]
+    },
+    {
+      "description": "Sort controls on the Recommendations page allowing sorting by fees or national ranking in addition to match score.",
+      "reason": "The build request only specifies that results should be sorted by match score (highest first). The Recommendations page adds a sort selector with fees and ranking options as additional sort modes, which were not requested.",
+      "evidence": [
+        "frontend/src/pages/Recommendations.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ChatbotWidget.tsx",
+    "frontend/src/components/CollegeCard.tsx",
+    "frontend/src/components/ComparisonTable.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/data/guidelinesData.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CollegeDetail.tsx",
+    "frontend/src/pages/Compare.tsx",
+    "frontend/src/pages/Guidelines.tsx",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/Map.tsx",
+    "frontend/src/pages/Profile.tsx",
+    "frontend/src/pages/Recommendations.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
